@@ -58,7 +58,7 @@ def _extract_json_payload(raw_content: str) -> dict[str, Any]:
 
     # Normalize expected fields to guarantee downstream consistency
     parsed["status"] = str(parsed["status"]).upper()
-    parsed.setdefault("summary", "Nincs elérhető összefoglaló.")
+    parsed.setdefault("summary", "No summary available.")
     parsed.setdefault("issues", [])
     return parsed
 
