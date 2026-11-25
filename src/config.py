@@ -22,6 +22,7 @@ EXTENSION_TO_LANGUAGE: dict[str, str] = {
 DEFAULT_LLM_API_URL = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
 DEFAULT_LLM_MODEL = "gemini-2.5-flash"
 DEFAULT_CONVENTIONS_DIR = "coding-conventions/conventions"
+DEFAULT_SYSTEM_PROMPT_PATH = "coding-conventions/prompts/system_prompt.md"
 DEFAULT_LOG_PATH = "ai_review_log.json"
 
 @dataclass(frozen=True)
@@ -35,6 +36,7 @@ class ReviewerConfig:
     llm_api_url: str
     llm_model: str
     conventions_dir: str
+    system_prompt_path: str
     human_reviewer: str
     log_path: str
     
@@ -70,6 +72,7 @@ def load_config() -> ReviewerConfig:
         llm_api_url=_get_env("LLM_API_URL", default=DEFAULT_LLM_API_URL),
         llm_model=_get_env("LLM_MODEL", default=DEFAULT_LLM_MODEL),
         conventions_dir=_get_env("CONVENTIONS_DIR", default=DEFAULT_CONVENTIONS_DIR),
+        system_prompt_path=_get_env("SYSTEM_PROMPT_PATH", default=DEFAULT_SYSTEM_PROMPT_PATH),
         human_reviewer=_get_env("HUMAN_REVIEWER", default=""),
         log_path=_get_env("LOG_PATH", default=DEFAULT_LOG_PATH),
     )
